@@ -101,6 +101,8 @@ export class OpenOCDServerController extends EventEmitter implements GDBServerCo
     // OpenOCD provides a hack to synchronize gdb and itself by issuing 'monitor gdb_sync' followed
     // by a 'stepi' which doesn't really do a stepi but can emulate a break due to a step that
     // gdb expects
+    //
+    // Change 'monitor reset halt' to 'monitor reset init'
     public launchCommands(): string[] {
         const commands = [
             ...genDownloadCommands(this.args, ['interpreter-exec console "monitor reset init"']),
