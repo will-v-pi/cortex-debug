@@ -103,8 +103,8 @@ export class OpenOCDServerController extends EventEmitter implements GDBServerCo
     // gdb expects
     public launchCommands(): string[] {
         const commands = [
-            ...genDownloadCommands(this.args, ['interpreter-exec console "monitor reset halt"']),
-            'interpreter-exec console "monitor reset halt"'
+            ...genDownloadCommands(this.args, ['interpreter-exec console "monitor reset init"']),
+            'interpreter-exec console "monitor reset init"'
         ];
         return commands;
     }
@@ -118,7 +118,7 @@ export class OpenOCDServerController extends EventEmitter implements GDBServerCo
 
     public resetCommands(): string[] {
         const commands: string[] = [
-            'interpreter-exec console "monitor reset halt"'
+            'interpreter-exec console "monitor reset init"'
         ];
 
         if (!this.args.runToEntryPoint && this.args.breakAfterReset) {
